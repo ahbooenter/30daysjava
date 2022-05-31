@@ -1,0 +1,27 @@
+const ages = [19, 22, 19, 24, 20, 25, 26, 24, 25, 24]
+ages.sort()
+let x = ages.length
+console.log(ages)
+let max = ages[x-1]
+let min = ages[0]
+console.log(max, min)
+n = x/2
+if((2)%1 == 0){
+  y = n-1
+  console.log((ages[n]+ages[y])/2)
+}
+else{
+  
+  y = Math.round(n) - 1 
+  console.log(ages[y])
+}
+avg = 0
+for(var i = x; i--; i > 0){
+    console.log(i)
+    avg += ages[i]
+}
+avg/=x
+console.log(avg)
+
+console.log(max-min)
+console.log(Math.max(max-avg, Math.abs(min-avg)))
