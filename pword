@@ -1,0 +1,17 @@
+function randomchar(){
+let randomNum = Math.random()         // generates 0 to 0.999
+let numBtnZeroAndTen = randomNum * 93.1
+
+//console.log(numBtnZeroAndTen)         // this gives: min 0 and max 10.99
+
+let randomNumRoundToFloor = Math.floor(numBtnZeroAndTen)
+//console.log(randomNumRoundToFloor)    // this gives between 0 and 10
+
+return String.fromCharCode(randomNumRoundToFloor+33)
+}
+let a = ""
+
+for(i = 0; i <50; i++){
+  a=a.concat(randomchar())
+}
+console.log(a)
