@@ -1,0 +1,9 @@
+function sevenrandom(){
+let arr = []
+while(arr.length < 7){
+    var r = Math.floor(Math.random() * 7) + 1;
+    if(arr.includes(r) == false) arr.push(r);
+}
+console.log(arr);
+}
+sevenrandom()
