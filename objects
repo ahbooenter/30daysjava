@@ -1,0 +1,140 @@
+    const users = [
+    {
+        _id: 'ab12ex',
+        username: 'Alex',
+        email: 'alex@alex.com',
+        password: '123123',
+        createdAt:'08/01/2020 9:00 AM',
+        isLoggedIn: false
+    },
+    {
+        _id: 'fg12cy',
+        username: 'Asab',
+        email: 'asab@asab.com',
+        password: '123456',
+        createdAt:'08/01/2020 9:30 AM',
+        isLoggedIn: true
+    },
+    {
+        _id: 'zwf8md',
+        username: 'Brook',
+        email: 'brook@brook.com',
+        password: '123111',
+        createdAt:'08/01/2020 9:45 AM',
+        isLoggedIn: true
+    },
+    {
+        _id: 'eefamr',
+        username: 'Martha',
+        email: 'martha@martha.com',
+        password: '123222',
+        createdAt:'08/01/2020 9:50 AM',
+        isLoggedIn: false
+    },
+    {
+        _id: 'ghderc',
+        username: 'Thomas',
+        email: 'thomas@thomas.com',
+        password: '123333',
+        createdAt:'08/01/2020 10:00 AM',
+        isLoggedIn: false
+    }
+    ];
+
+    const products = [
+  {
+    _id: 'eedfcf',
+    name: 'mobile phone',
+    description: 'Huawei Honor',
+    price: 200,
+    ratings: [
+      { userId: 'fg12cy', rate: 5 },
+      { userId: 'zwf8md', rate: 4.5 }
+    ],
+    likes: []
+  },
+  {
+    _id: 'aegfal',
+    name: 'Laptop',
+    description: 'MacPro: System Darwin',
+    price: 2500,
+    ratings: [],
+    likes: ['fg12cy']
+  },
+  {
+    _id: 'hedfcg',
+    name: 'TV',
+    description: 'Smart TV:Procaster',
+    price: 400,
+    ratings: [{ userId: 'fg12cy', rate: 5 }],
+    likes: ['fg12cy']
+  }
+]
+
+function signup(name, username, email, password){
+    if(checkname(name)){
+        console.log("you are already registered lmao")
+        return 1
+    }
+    const now = new Date()
+    let year = now.getFullYear()
+        month = (now.getMonth()+1)
+        date = now.getDate()
+        hours = now.getHours()
+        min = now.getMinutes()
+        
+    month = addzero(month)
+    date = addzero(date)
+    min = addzero(min)    
+    
+    let creattime = date +"/"+ month +"/"+ year +" "+ hours +":"+ min + " " + ampm(hours)     
+    users.push( {
+        '_id' : name,
+        'username' : username,
+        'email' : email,
+        'password' : password,
+        'createdAt' : creattime,
+        'isLoggedIn' : false
+    }
+    )
+}
+//functions in signup
+    function checkname(name){
+    for(n in users){
+    if(users[n].hasOwnProperty(name)){
+        return true
+    }
+}
+}
+    function addzero(value){
+    if(value < 10){
+         value = value.toString()
+              .split()
+        value.unshift('0')
+        value = value.join('')
+      }
+      
+      return value
+}
+    function ampm(value){
+    if (hours > 11){return "PM"}
+    else{return"AM"}
+}
+signup('name', 'username', 'email', 'password')
+
+function signin(name, password){
+    if(checkname(name) == false){
+        console.log("invalid id")
+        return 1
+    }
+    for(n in users){
+    if(users[n]._id == name){
+        if(users[n].password == password){
+            users[n].isLoggedIn = true
+            console.log("logged in")
+        }
+        }
+    }
+}
+signin('name', 'password')
+console.log(users)
