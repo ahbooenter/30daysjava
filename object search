@@ -50,6 +50,28 @@ const users = {
   }
 }
 
+function signup(name,  email, skills, age, isLoggedIn, points){
+    if(checkname(name)){
+        console.log("you are already registered lmao")
+        return 1
+    }
+    users[`${name}`] = {
+        'email' : email,
+        'skills' : skills,
+        'age' : age,
+        'isLoggedIn' : isLoggedIn,
+        'points' : points
+    }
+    console.log(users)
+}
+
+function checkname(name){
+    if(users.hasOwnProperty(name)){
+        return true
+    }
+}
+
+if(true){
 const keys = Object.keys(users)
 console.log(keys)
 let sum = 0
@@ -65,3 +87,11 @@ for( const n in keys){
     if(d.includes('React')){sum3++}
 }
 console.log(sum, sum2, sum3)
+}
+//prompt may not work lmao
+const name = prompt("Name?")
+const email = prompt("email?")
+const skills = prompt("skills?")
+const age = prompt("Age?")
+const points = prompt("points?")
+signup(name, email, skills, age, true, points)
