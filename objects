@@ -1,4 +1,4 @@
-    const users = [
+const users = [
     {
         _id: 'ab12ex',
         username: 'Alex',
@@ -137,4 +137,36 @@ function signin(name, password){
     }
 }
 signin('name', 'password')
-console.log(users)
+
+
+//products
+function rate(prodid,userid, rating){
+    let n = findprod(prodid)
+    products[n].ratings.push({
+        'userid': userid,
+        'rate': rating
+    })
+}
+function findprod(prodid){
+    for(n in products){
+        if(products[n]._id == prodid){
+            return n
+        }
+    }
+}
+function averagerating(prodid){
+    let n = findprod(prodid)
+    let sum = 0
+    let howmany = 1
+    for(x in products[n].ratings){
+        sum += products[n].ratings[x].rate
+        howmany++
+    }
+    console.log("average rating:" + Math.round(sum/howmany))
+}
+
+
+rate("hedfcg", "dumb", 2)
+averagerating("hedfcg")
+console.log( products[n])
+
