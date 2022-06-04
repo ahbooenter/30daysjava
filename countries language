@@ -1,0 +1,48 @@
+const countries =[
+    {
+        languages : 'a',
+        population : 100
+    },
+    {
+        languages : 'a',
+        population : 100
+    }
+    
+    ]
+let id = 0
+let lan = ['holder']
+function count(){
+for( n in countries){
+    for(x in countries[n].languages){
+        //console.log(includes(lan,countries[n].languages[x]))
+        //console.log(countries[n].languages[x])
+                if(includes(lan,countries[n].languages[x])){
+                    lan[id].Total += countries[n].population
+                }
+                else{lan.push({
+                           'Language': countries[n].languages[x],
+                           'Total' : countries[n].population
+                           
+                        })
+                         console.log(countries[n].languages[x])
+                        includes(lan,countries[n].languages[x])
+                }    
+                
+                
+     }
+}
+}
+count()
+function includes(arr, language){
+    for(y in arr){
+        console.log(y, arr[y].Language, language)
+        if(arr[y].Language == language){
+            id = y
+            return true
+            
+        }
+        
+    }
+    return false
+}
+console.log(lan)
