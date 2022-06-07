@@ -1,0 +1,31 @@
+sentence = `%I $am@% a %tea@cher%, &and& I lo%#ve %tea@ching%;. There $is nothing; &as& mo@re rewarding as educa@ting &and& @emp%o@wering peo@ple. ;I found tea@ching m%o@re interesting tha@n any other %jo@bs. %Do@es thi%s mo@tivate yo@u to be a tea@cher!?`
+let newsentence = sentence.replace(/[^a-zA-Z !?,.]/g , '')
+//console.log(newsentence)
+let newersentence = sentence.replace(/[^a-zA-Z ]/g , '').toLowerCase()
+
+let array = newersentence.split(" ")
+
+let sett = new Set(array)
+//console.log(sett)
+let words = []
+for(l of sett){
+    let x = array.filter((word) => word == l)
+    //console.log(x)
+    words.push({
+        'word' : l,
+        'count' : x.length
+        
+    })
+}
+
+words.sort(function(a,b){
+    if(a.count > b.count) return -1
+    if(a.count < b.count) return 1
+    return 0
+})
+
+console.log(words)
+
+for(n = 0; n < 3; n++){
+console.log(words[n])
+}
