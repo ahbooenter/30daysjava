@@ -1,0 +1,38 @@
+const url = "https://api.thecatapi.com/v1/breeds"
+let weightsim = []
+let weightsme = []
+let avweightsim = []
+let avweightsme = []
+ fetch(url)
+  .then(response => response.json())
+  .then(data=>{
+    for(i = 0; i < data.length; i ++){
+        let stringim = data[i]['weight']['imperial']
+        let stringme = data[i]['weight']["metric"]
+        //console.log(stringim, stringme)
+        const pattern = /\d+/g
+        let extractim = stringim.match(pattern)
+        let extractme = stringme.match(pattern)
+        //console.log(extract)
+        weightsim.push(extractim)
+        weightsme.push(extractme)
+    }
+    //console.log(weightsim, weightsme)
+    for(i in weightsim){
+        avweightsim.push(average(weightsim[i]))
+    }
+    for(i in weightsme){
+        avweightsme.push(average(weightsme[i]))
+    }
+    console.log(average(avweightsim, avweightsme))//finishing
+  })
+.catch(error=>console.log(error))
+
+function average(array){
+    let sum = 0
+    for(i in array){
+        sum += parseInt(array[i])
+    }
+    sum /= array.length
+    return sum
+}
